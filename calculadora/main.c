@@ -3,14 +3,13 @@
 #include <string.h>
 #include "funciones.h"
 
-char menu[] = "\n1- Ingresar 1er operando (A=x)\n2- Ingresar 2do operando (B=y)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\n";
+//char menu[] = "\n1- Ingresar 1er operando (A=x)\n2- Ingresar 2do operando (B=y)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\n";
 char error[] = "\nLa opcion ingresada no es valida, debe elegir\nuna opcion entre 1 y 9, desea continuar?: s/n \n";
 
 
 int main()
 {
     int num1 = 0,num2 = 0;
-    char numm1,numm2;
     int resul1,resul2,resul3,resul4,resul5;
     //float numdiv1,numdiv2;
 
@@ -23,7 +22,17 @@ int main()
 
         system("cls");
 
-        opcion = valOpMen(menu,error,1,9);
+        printf("\n1- Ingresar 1er operando (A=%d)\n2- Ingresar 2do operando (B=%d)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\n",num1,num2);
+
+        opcion = valOpMen(error,1,9);
+
+        //printf("\n1- Ingresar 1er operando (A=%d)\n2- Ingresar 2do operando (B=d)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\n",num1,num2);
+
+
+        if(opcion==-1)//con esto valido si el usuario no desea continuar con lo que me devuelve mi funcion valOpMen
+        {
+            return 0;
+        }
 
 
 
@@ -43,12 +52,14 @@ int main()
 
                 fflush(stdin);//lo utilizo para borrar lo que se encuentra en el "buffer", es decir si no coloco esta linea
                               //se va a guardar el caracter /n que es el Enter, en vez de guardarse el numero que ingresa el usuario.
-                scanf("%c",&numm1); //escaneo un caracter para poder insertarlo en mi array de char que contiene el menu,y luego mas abajo lo
+                scanf("%d",&num1); //escaneo un caracter para poder insertarlo en mi array de char que contiene el menu,y luego mas abajo lo
                                    //transformo a entero para que pueda operar con dicho numero,
+                system("cls");
+                printf("\n1- Ingresar 1er operando (A=%d)\n2- Ingresar 2do operando (B=%d)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\n",num1,num2);
+                //system("pause");
+                //menu[29] = numm1; //guardo en la posicion 29 de mi array, el numero que el usuario ingresa para que se vea en el menu de mi calculadora.
 
-                menu[29] = numm1; //guardo en la posicion 29 de mi array, el numero que el usuario ingresa para que se vea en el menu de mi calculadora.
-
-                num1 = charAInt(num1,numm1);//convierto el char ingresado a entero para poder operar con el mismo.
+                //num1 = charAInt(num1,numm1);//convierto el char ingresado a entero para poder operar con el mismo.
 
                 //numdiv1 = atof(num1);
 
@@ -63,11 +74,13 @@ int main()
 
                 fflush(stdin);
 
-                scanf("%c",&numm2);
+                scanf("%d",&num2);
 
-                menu[60] = numm2;
+                printf("\n1- Ingresar 1er operando (A=%d)\n2- Ingresar 2do operando (B=%d)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\n",num1,num2);
 
-                num2 = charAInt(num2,numm2);
+                //menu[60] = numm2;
+
+                //num2 = charAInt(num2,numm2);
 
                 //numdiv2 = atof(num2);
 
@@ -95,7 +108,7 @@ int main()
                 }
 
                 resul3 = division(num1,num2);
-                printf("\n El resultado de la division es: %c \n",resul3);
+                printf("\n El resultado de la division es: %d \n",resul3);
                 system("pause");
                 break;
             case 6:
@@ -117,6 +130,19 @@ int main()
                 system("pause");
                 break;
             case 8:
+                system("cls");
+                resul1 = suma(num1,num2);
+                resul2 = resta(num1,num2);
+                resul3 = division(num1,num2);
+                resul4 = multip(num1,num2);
+                resul5 = factorial(num1);
+
+                printf("El resultado de la suma es: %d",resul1);
+                printf("\nEl resultado de la resta es: %d",resul2);
+                printf("\nEl resultado de la division es: %d",resul3);
+                printf("\nEl resultado de la multiplicacion es: %d",resul4);
+                printf("\nEl resultado del factorial es: %d\n",resul5);
+                system("pause");
 
                 break;
             case 9:

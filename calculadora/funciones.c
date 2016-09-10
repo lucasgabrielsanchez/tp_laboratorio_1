@@ -20,42 +20,39 @@ int multip(int a, int b)
     return resultado;
 }
 
-float division(float a, float b)
+int division(int a, int b)
 {
-    float resultado = a / b;
+    int resultado = a / b;
     return resultado;
 }
 
-int charAInt(int a, char b)
-{
-    a = b - '0';
-    return a;
-}
-
-int valOpMen(char texto[], char error[], int desde, int hasta)
+int valOpMen(char error[], int desde, int hasta)
 {
     int op;
     char respuesta;
 
     do
     {
-        system("cls");
-        printf("%s",texto);
+        //system("cls");
         scanf("%d",&op);
 
         if(op <= hasta && op >= desde)
         {
-            return op;
+            respuesta='n';
         }
-            system("cls");
+        else
+        {
+            //system("cls");
             printf("%s",error);
             fflush(stdin);
             scanf("%c",&respuesta);
+            op=-1;
+        }
 
      }
         while(respuesta=='s');
 
-            return 0;
+         return op;
 
 
 

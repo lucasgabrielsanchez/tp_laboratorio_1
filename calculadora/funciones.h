@@ -7,11 +7,9 @@ int resta(int a, int b);
 
 int multip(int a, int b);
 
-float division(float a, float b);
+int division(int a, int b);
 
-int charAInt(int a, char b);
-
-int valOpMen(char texto[], char error[], int desde, int hasta);
+int valOpMen(char error[], int desde, int hasta);
 
 int factorial(int a);
 
